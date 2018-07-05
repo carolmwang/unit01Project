@@ -58,16 +58,16 @@ a {
     width: 900px;
     height: 455px;
     display: block;
-    float: left;
+    float: left;    
 }
 
 .images {
-    text-decoration: underline #225E79;
+    text-decoration: underline;
     width: 300px;
     height  : 455px;
     display: block;
     float: left;
-    color: #225E79;
+    color: #0772A1;
     margin: 0 auto;
     text-align: center;
 }
@@ -79,6 +79,10 @@ a {
     border: 1px solid black;
     float: left;
     margin: 0.6px;
+}
+
+.cell:hover {
+    background-color: #98d2eb;
 }
 
 
