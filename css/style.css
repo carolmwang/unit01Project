@@ -55,8 +55,8 @@ a {
 /*game board*/
 
 .game-board {
-    width: 900px;
-    height: 455px;
+    width: 890px;
+    height: 477px;
     display: block;
     float: left;    
 }
