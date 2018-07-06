@@ -1,3 +1,10 @@
+// hidden instructions function
+
+const instructionsEl = document.querySelector('.instructions');
+instructionsEl.addEventListener('click', (e) => {
+    document.body.classList.add('instruction-show');
+})
+
 // try to get the board cell to flip back to white if the image is not there
 // add remaining moves to html, css
 // decrease the remaining moves by 1 
