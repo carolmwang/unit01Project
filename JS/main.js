@@ -36,12 +36,12 @@ const img = document.querySelectorAll('img');
 
 
 //create a random array of 5 indices and add images to them
-let array = [0, 1, 2, 3, 4];
-// while(array.length < 5) {
-//     let randomNumber = Math.floor(Math.random() * 91) + 1;
-//     if(array.indexOf(randomNumber) > -1) continue;
-//     array[array.length] = randomNumber;
-// }
+let array = [];
+while(array.length < 5) {
+    let randomNumber = Math.floor(Math.random() * 91) + 1;
+    if(array.indexOf(randomNumber) > -1) continue;
+    array[array.length] = randomNumber;
+}
 
 for(let i = 0; i < array.length; i += 1) {
 const imgEl = img[array[i]]
