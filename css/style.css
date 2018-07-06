@@ -2,6 +2,7 @@ body {
     font-family: 'Cabin Sketch', cursive;
     margin: auto;
     max-width: 1200px;
+    text-align: center;
 }
 
 .index-header {
@@ -14,9 +15,19 @@ body {
     text-shadow: 7px 7px rgb(57, 124, 153);
 }
 
+.remaining {
+    font-size: 15px;
+}
+
+.score {
+    color: rgb(228, 32, 32);
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .game-header {
     letter-spacing: .7em;
-    font-size: 50px;
+    font-size: 60px;
     text-shadow: 3px 3px #024A68;
     font-weight: bold;
     text-align: center;
@@ -25,6 +36,11 @@ body {
     color: #0772A1;
 }
 
+.inline-head, p{
+    display: inline;  
+    padding-left: 10px;  
+
+}
 .home {
     font-family: 'Cabin Sketch', cursive; 
     display: block;
@@ -63,15 +79,28 @@ a {
 
 .images {
     text-decoration: underline;
-    width: 300px;
+    width: 200px;
     height  : 455px;
     display: block;
     float: left;
-    color: #0772A1;
+    color: black;
     margin: 0 auto;
     text-align: center;
+    padding: 20px 0;
 }
 
+.images-search {
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+
+}
+img {
+    width: 65px;
+    height: 65px;
+}
 
 .cell {
     width: 65px;
