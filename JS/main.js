@@ -58,9 +58,9 @@ let imgWinner = 0;
 // add winner or loser class to event listener
 const winner = function() {
     if (score === 0) {
-        document.body.classList.add('.game-over');
+        document.body.classList.add('game-over');
     } else if (imgWinner === 5 && score > 0) {
-        document.body.classList.add('.winner');
+        document.body.classList.add('winner');
 }}
 
 gameBoard.addEventListener('click', (e)=> {

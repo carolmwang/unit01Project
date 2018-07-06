@@ -117,16 +117,47 @@ img {
 
 /*hidden*/
 
-.new-game {
-    height: 300px;
-    width: 400px;
+.new-game-lose, .new-game-win {
     position: absolute;
     top: 50%;
     left: 50%;
+    height: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    padding: 4rem;
+    background-color: rgb(255, 255, 255);
+    font-size: 100px;
+    color: #024A68;
     text-align: center;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
     transition: all 250ms ease;
+    border: 4px solid black;
+    margin: 0;
+}
 
+.button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    font-size: 20px;
+    background-color:#3ba3d0;
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 250ms ease;
+}
+
+.winner .new-game-win, .winner .button{
+    opacity: 0.95;
+    pointer-events: all;
+}
+
+.game-over .new-game-lose, .game-over .button{
+    opacity: 0.95;
+    pointer-events: all;
 }
