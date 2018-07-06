@@ -28,12 +28,8 @@ for (let i = 0; i < 91; i += 1) {
     gameCell.dataset.name = i;
     let imgEl = document.createElement('img');
     gameCell.appendChild(imgEl);
+    imgEl.dataset.clicked = 'no';
     }
-
-// add event listeners to each cell
-const cell = document.querySelectorAll('.cell');
-const img = document.querySelectorAll('img');
-
 
 //create a random array of 5 indices and add images to them
 let array = [];
@@ -43,17 +39,18 @@ while(array.length < 5) {
     array[array.length] = randomNumber;
 }
 
+const img = document.querySelectorAll('img');
 for(let i = 0; i < array.length; i += 1) {
 const imgEl = img[array[i]]
 imgEl.src = gameImages[i]; 
 imgEl.dataset.img = 1;
-imgEl.style.width = '0px';
-imgEl.style.height = '0px';
+imgEl.style.opacity = 0;
+// imgEl.style.height = '0px';
 };
 
 // gameBoard.addEventListener('click', (e)=> console.log(e.target.dataset.img))
 let scoreEl = document.querySelector('.score');
-let score = 25;
+let score = 30;
 let imgWinner = 0;
 // add winner or loser class to event listener
 const winner = function() {
@@ -64,21 +61,24 @@ const winner = function() {
 }}
 
 gameBoard.addEventListener('click', (e)=> {
-    score -= 1
-    scoreEl.innerHTML = score;
-    const imgTarget = e.target.lastChild;
-    if (imgTarget && imgTarget.dataset.img == 1) {
-        imgTarget.style.width = '65px';
-        imgTarget.style.height = '65px';
+    if (e.target && e.target.dataset.img == 1) {
+        e.target.style.opacity = 1;
         imgWinner += 1;
         const imgEl = document.querySelectorAll('.images-search');
         for (let i = 0; i < imgEl.length; i += 1)
-        if (imgEl[i].src === imgTarget.src) {
+            if (imgEl[i].src === e.target.src) {
             imgEl[i].style.opacity = '0.3';
-        }
+            }
     } else {
         e.target.style.background = '#838383';
     }
+    if (e.target.dataset.clicked === 'no') {
+        score -= 1;
+        scoreEl.innerHTML = score;
+        e.target.dataset.clicked = 'yes';
+    } else {
+        scoreEl.innerHTML = score;
+    } 
     winner();
 })
 
