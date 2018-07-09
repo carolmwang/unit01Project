@@ -1,17 +1,3 @@
-// hidden instructions function
-/*
-const instructionsEl = document.querySelector('.instructions');
-instructionsEl.addEventListener('click', (e) => {
-    document.body.classList.add('instruction-show');
-})
-*/
-// try to get the board cell to flip back to white if the image is not there
-// add remaining moves to html, css
-// decrease the remaining moves by 1 
-// work on hints 
-
-
-
 // array of all images
 const allImages = ['img/img1.jpeg','img/img2.jpeg', 'img/img3.jpeg', 'img/img4.jpeg', 'img/img5.jpeg', 'img/img6.jpeg', 'img/img7.jpeg', 'img/img8.jpeg', 'img/img9.jpeg', 'img/img10.jpeg', 'img/img11.jpeg', 'img/img12.jpeg', 'img/img13.jpeg', 'img/img14.jpeg', 'img/img15.jpeg']
 
@@ -23,8 +9,6 @@ for (let i = 0; i < 5; i += 1) {
     allImages.splice(arrayIndex, 1);
     gameImages.push(imagePush);
 }
-
-
 
 // create cells in gameboard and add event listeners to the cell
 let gameBoard = document.querySelector('.game-board');
@@ -64,8 +48,7 @@ for (let i = 0; i < 84; i += 1) {
 //create a random array of 5 indices and add images to them
 let array = [];
 while(array.length < 5) {
-    let randomNumber = Math.floor(Math.random() * 84) + 1;
-    if(array.indexOf(randomNumber) > -1) continue;
+    let randomNumber = Math.floor(Math.random() * 84);
     array[array.length] = randomNumber;
 }
 
