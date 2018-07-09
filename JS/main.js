@@ -29,7 +29,6 @@ for (let i = 0; i < 84; i += 1) {
                 imgWinner += 1;
                 const imgEl = document.querySelectorAll('.images-search');
                 if (e.target === cellHintTwo.lastChild) {
-                    debugger;
                     cellHint.style.background = '#A1B2BF';
                 }
                 for (let i = 0; i < imgEl.length; i += 1)
