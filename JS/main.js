@@ -1,10 +1,10 @@
 // hidden instructions function
-
+/*
 const instructionsEl = document.querySelector('.instructions');
 instructionsEl.addEventListener('click', (e) => {
     document.body.classList.add('instruction-show');
 })
-
+*/
 // try to get the board cell to flip back to white if the image is not there
 // add remaining moves to html, css
 // decrease the remaining moves by 1 
@@ -26,33 +26,55 @@ for (let i = 0; i < 5; i += 1) {
 
 
 
-// create cells in gameboard
+// create cells in gameboard and add event listeners to the cell
 let gameBoard = document.querySelector('.game-board');
-for (let i = 0; i < 91; i += 1) {
+for (let i = 0; i < 84; i += 1) {
     let gameCell = document.createElement('div');
     gameCell.className = 'cell';
     gameBoard.appendChild(gameCell);
     gameCell.dataset.name = i;
-    let imgEl = document.createElement('img');
+    gameCell.style.background = '#E2F2FF';
+    let imgEl = document.createElement('img'); // adding image elements within div
     gameCell.appendChild(imgEl);
     imgEl.dataset.clicked = 'no';
-    }
+    imgEl.dataset.img = '0';
+    gameCell.addEventListener('click', (e)=> {
+            if (e.target && e.target.dataset.img === '1') {
+                e.target.style.opacity = 1;
+                imgWinner += 1;
+                const imgEl = document.querySelectorAll('.images-search');
+                for (let i = 0; i < imgEl.length; i += 1)
+                    if (imgEl[i].src === e.target.src) {
+                    imgEl[i].style.opacity = '0.3';
+                    }
+            } else {
+                e.target.style.background = '#A1B2BF';
+            }
+            if (e.target.dataset.clicked === 'no') {
+                score -= 1;
+                scoreEl.innerHTML = score;
+                e.target.dataset.clicked = 'yes';
+            } else {
+                scoreEl.innerHTML = score;
+            } 
+            winner();
+        })
+}
 
 //create a random array of 5 indices and add images to them
 let array = [];
 while(array.length < 5) {
-    let randomNumber = Math.floor(Math.random() * 91) + 1;
+    let randomNumber = Math.floor(Math.random() * 84) + 1;
     if(array.indexOf(randomNumber) > -1) continue;
     array[array.length] = randomNumber;
 }
 
 const img = document.querySelectorAll('img');
 for(let i = 0; i < array.length; i += 1) {
-const imgEl = img[array[i]]
-imgEl.src = gameImages[i]; 
-imgEl.dataset.img = 1;
-imgEl.style.opacity = 0;
-// imgEl.style.height = '0px';
+    const imgEl = img[array[i]]
+    imgEl.src = gameImages[i]; 
+    imgEl.dataset.img = 1;
+    imgEl.style.opacity = 0;
 };
 
 // gameBoard.addEventListener('click', (e)=> console.log(e.target.dataset.img))
@@ -65,31 +87,7 @@ const winner = function() {
         document.body.classList.add('game-over');
     } else if (imgWinner === 5 && score > 0) {
         document.body.classList.add('winner');
-}}
-
-gameBoard.addEventListener('click', (e)=> {
-    if (e.target && e.target.dataset.img == 1) {
-        e.target.style.opacity = 1;
-        imgWinner += 1;
-        const imgEl = document.querySelectorAll('.images-search');
-        for (let i = 0; i < imgEl.length; i += 1)
-            if (imgEl[i].src === e.target.src) {
-            imgEl[i].style.opacity = '0.3';
-            }
-    } else {
-        e.target.style.background = '#838383';
-    }
-    if (e.target.dataset.clicked === 'no') {
-        score -= 1;
-        scoreEl.innerHTML = score;
-        e.target.dataset.clicked = 'yes';
-    } else {
-        scoreEl.innerHTML = score;
-    } 
-    winner();
-})
-
-
+    }}
 
 // add images to the hidden images div
 
@@ -101,3 +99,28 @@ for (let i = 0; i < 5; i += 1) {
     imgEl.src = gameImages[i];
 }
 
+
+// hint button
+
+let hintArray = [];
+const hint = document.querySelector('.hint-button');
+hint.addEventListener('click', (e)=> {
+    hintArray.shift();
+    hintArray.shift();
+    let hintNone = document.querySelectorAll("[data-img = '0']");
+    debugger;
+    let randomArrayNumber = Math.floor(Math.random()*hintArray.length);
+    if (hintNone[randomArrayNumber].dataset.clicked === 'no') {
+        hintArray.push(randomArrayNumber);
+        debugger;
+    }
+    let hintImages = document.querySelectorAll("[data-img = '1']");
+    if (hintImages[0].dataset.clicked === 'no') {
+        hintArray.push(parseInt(hintImages[0].parentNode.dataset.name));
+        debugger;
+    }  
+    const cellHint = document.querySelector(`[data-name = '${hintArray[0]}']`);
+    const cellHintTwo = document.querySelector(`[data-name = '${hintArray[1]}']`);
+    cellHint.style.background = 'yellow';
+    cellHintTwo.style.background = 'yellow';
+})

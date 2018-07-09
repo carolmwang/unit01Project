@@ -71,10 +71,10 @@ a {
 /*game board*/
 
 .game-board {
-    width: 890px;
-    height: 477px;
+    width: 828px;
+    height: 480px;
     display: block;
-    float: left;    
+    float: left;   
 }
 
 .images {
@@ -97,23 +97,28 @@ a {
     margin: 0 auto;
 
 }
+
 img {
     width: 65px;
     height: 65px;
+    
 }
 
 .cell {
     width: 65px;
     height: 65px;
-    border: 1px solid black;
     float: left;
-    margin: 0.6px;
+    margin: 1px;
+    border: 1px solid black;
 }
 
 .cell:hover {
     background-color: #98d2eb;
 }
 
+/* .hint {
+
+} */
 
 /*hidden*/
 
