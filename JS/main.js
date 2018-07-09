@@ -22,12 +22,16 @@ for (let i = 0; i < 84; i += 1) {
     gameCell.appendChild(imgEl);
     imgEl.dataset.clicked = 'no';
     imgEl.dataset.img = '0';
-    imgEl.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    imgEl.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // https://stackoverflow.com/questions/1073015/how-do-i-remove-the-gray-border-that-surrounds-background-images
     gameCell.addEventListener('click', (e)=> {
             if (e.target && e.target.dataset.img === '1') {
                 e.target.style.opacity = 1;
                 imgWinner += 1;
                 const imgEl = document.querySelectorAll('.images-search');
+                if (e.target === cellHintTwo.lastChild) {
+                    debugger;
+                    cellHint.style.background = '#A1B2BF';
+                }
                 for (let i = 0; i < imgEl.length; i += 1)
                     if (imgEl[i].src === e.target.src) {
                     imgEl[i].style.opacity = '0.3';
@@ -88,6 +92,8 @@ for (let i = 0; i < 5; i += 1) {
 // hint button
 
 let hintArray = [];
+let cellHint;
+let cellHintTwo;
 const hint = document.querySelector('.hint-button');
 hint.addEventListener('click', (e)=> {
     hintArray.shift();
@@ -107,8 +113,8 @@ hint.addEventListener('click', (e)=> {
         break;
     } 
     }   
-    const cellHint = document.querySelector(`[data-name = '${hintArray[0]}']`);
-    const cellHintTwo = document.querySelector(`[data-name = '${hintArray[1]}']`);
+    cellHint = document.querySelector(`[data-name = '${hintArray[0]}']`);
+    cellHintTwo = document.querySelector(`[data-name = '${hintArray[1]}']`);
     cellHint.style.background = 'rgb(245, 245, 140)';
     cellHintTwo.style.background = 'rgb(245, 245, 140)';
 })
