@@ -108,19 +108,23 @@ hint.addEventListener('click', (e)=> {
     hintArray.shift();
     hintArray.shift();
     let hintNone = document.querySelectorAll("[data-img = '0']");
-    debugger;
-    let randomArrayNumber = Math.floor(Math.random()*hintArray.length);
+    for(i = 0; i < hintNone.length; i += 1){
+    let randomArrayNumber = Math.floor(Math.random() * hintNone.length);
     if (hintNone[randomArrayNumber].dataset.clicked === 'no') {
         hintArray.push(randomArrayNumber);
-        debugger;
+        break;
+    } 
     }
     let hintImages = document.querySelectorAll("[data-img = '1']");
-    if (hintImages[0].dataset.clicked === 'no') {
-        hintArray.push(parseInt(hintImages[0].parentNode.dataset.name));
-        debugger;
-    }  
+    // debugger;
+    for(i = 0; i < hintImages.length; i += 1) {
+    if (hintImages[i].dataset.clicked === 'no') {
+        hintArray.push(parseInt(hintImages[i].parentNode.dataset.name));
+        break;
+    } 
+    }   
     const cellHint = document.querySelector(`[data-name = '${hintArray[0]}']`);
     const cellHintTwo = document.querySelector(`[data-name = '${hintArray[1]}']`);
-    cellHint.style.background = 'yellow';
-    cellHintTwo.style.background = 'yellow';
+    cellHint.style.background = 'rgb(245, 245, 140)';
+    cellHintTwo.style.background = 'rgb(245, 245, 140)';
 })
