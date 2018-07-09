@@ -14,14 +14,15 @@ for (let i = 0; i < 5; i += 1) {
 let gameBoard = document.querySelector('.game-board');
 for (let i = 0; i < 84; i += 1) {
     let gameCell = document.createElement('div');
-    gameCell.className = 'cell';
     gameBoard.appendChild(gameCell);
     gameCell.dataset.name = i;
     gameCell.style.background = '#E2F2FF';
+    gameCell.className = 'cell';
     let imgEl = document.createElement('img'); // adding image elements within div
     gameCell.appendChild(imgEl);
     imgEl.dataset.clicked = 'no';
     imgEl.dataset.img = '0';
+    imgEl.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
     gameCell.addEventListener('click', (e)=> {
             if (e.target && e.target.dataset.img === '1') {
                 e.target.style.opacity = 1;
@@ -52,15 +53,16 @@ while(array.length < 5) {
     array[array.length] = randomNumber;
 }
 
+// add 5 hidden images to the img element
 const img = document.querySelectorAll('img');
 for(let i = 0; i < array.length; i += 1) {
     const imgEl = img[array[i]]
     imgEl.src = gameImages[i]; 
     imgEl.dataset.img = 1;
-    imgEl.style.opacity = 0;
+    imgEl.style.opacity = 0;    
 };
 
-// gameBoard.addEventListener('click', (e)=> console.log(e.target.dataset.img))
+
 let scoreEl = document.querySelector('.score');
 let score = 30;
 let imgWinner = 0;
@@ -72,7 +74,7 @@ const winner = function() {
         document.body.classList.add('winner');
     }}
 
-// add images to the hidden images div
+// add images to the hidden images div (sidebar - images to find)
 
 const hiddenImages = document.querySelector('.images');
 for (let i = 0; i < 5; i += 1) {
@@ -99,7 +101,6 @@ hint.addEventListener('click', (e)=> {
     } 
     }
     let hintImages = document.querySelectorAll("[data-img = '1']");
-    // debugger;
     for(i = 0; i < hintImages.length; i += 1) {
     if (hintImages[i].dataset.clicked === 'no') {
         hintArray.push(parseInt(hintImages[i].parentNode.dataset.name));
