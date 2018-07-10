@@ -25,7 +25,7 @@ for (let i = 0; i < 84; i += 1) {
     imgEl.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // https://stackoverflow.com/questions/1073015/how-do-i-remove-the-gray-border-that-surrounds-background-images
     gameCell.addEventListener('click', (e)=> {
             if (e.target && e.target.dataset.img === '1') {
-                e.target.style.opacity = 1;
+                e.target.style.opacity = '1';
                 imgWinner += 1;
                 const imgEl = document.querySelectorAll('.images-search');
                 if (e.target === cellHintTwo.lastChild) {
@@ -61,8 +61,8 @@ const img = document.querySelectorAll('img');
 for(let i = 0; i < array.length; i += 1) {
     const imgEl = img[array[i]]
     imgEl.src = gameImages[i]; 
-    imgEl.dataset.img = 1;
-    imgEl.style.opacity = 0;    
+    imgEl.dataset.img = '1';
+    imgEl.style.opacity = '0';    
 };
 
 
@@ -73,7 +73,7 @@ let imgWinner = 0;
 const winner = function() {
     if (score === 0) {
         document.body.classList.add('game-over');
-    } else if (imgWinner === 5 && score > 0) {
+    } else if (imgWinner === 5 && score >= 0) {
         document.body.classList.add('winner');
     }}
 
@@ -98,7 +98,7 @@ hint.addEventListener('click', (e)=> {
     hintArray.shift();
     hintArray.shift();
     let hintNone = document.querySelectorAll("[data-img = '0']");
-    for(i = 0; i < hintNone.length; i += 1){
+    for(let i = 0; i < hintNone.length; i += 1){
     let randomArrayNumber = Math.floor(Math.random() * hintNone.length);
     if (hintNone[randomArrayNumber].dataset.clicked === 'no') {
         hintArray.push(randomArrayNumber);
@@ -106,7 +106,7 @@ hint.addEventListener('click', (e)=> {
     } 
     }
     let hintImages = document.querySelectorAll("[data-img = '1']");
-    for(i = 0; i < hintImages.length; i += 1) {
+    for(let i = 0; i < hintImages.length; i += 1) {
     if (hintImages[i].dataset.clicked === 'no') {
         hintArray.push(parseInt(hintImages[i].parentNode.dataset.name));
         break;
