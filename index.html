@@ -11,20 +11,24 @@
 <body>
     <header class="index-header">HIDE &amp; SEEK</header>
     <button class="home instructions">INSTRUCTIONS</button>
-    <div class="instruction-pop">
+    <div class="instruction-pop" id="myModal">
+
+        <div class="modal-content">
         <span class="close">&times;</span>
-        <h1 class="instruction-list">How to play:</h1>
+        <h1 class="instruction-list-header">How to play:</h1>
         <ol class="instruction-list">
             <li>In 30 guesses, locate the hidden images on the game board</li>
-            <li>Stuck? Click "hint" and 5 possible locations will be highlighted</li>
+            <li>Stuck? Click "hint". 2 cells will be highlighted in yellow, a hidden image will be in one of them!</li>
             <li>GOOD LUCK!!</li>
         </ol>
+        </div>
+    
     </div>
         <!--instruction popup here-->
     <button class="home start"><a href="game.html">START</a></button>
     <footer>
         <p class="copyright">&copy;Carol Wang</p>
     </footer>
-    <script src="JS/main.js"></script>
+    <script src="JS/index.js"></script>
 </body>
 </html>

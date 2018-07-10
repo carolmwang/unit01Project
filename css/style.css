@@ -1,18 +1,31 @@
 body {
     font-family: 'Cabin Sketch', cursive;
-    margin: auto;
-    max-width: 1200px;
+    margin: 10px auto;
+    max-width: 1030px;
     text-align: center;
 }
 
+@keyframes appearDisappear {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .index-header {
-    font-size: 200px;
+    font-size: 150px;
     font-weight: bold;
     text-align: center;
     margin: 0 auto;
     padding-top: 40px;
     color: rgb(17, 85, 114);
     text-shadow: 7px 7px rgb(57, 124, 153);
+    animation: appearDisappear 3s infinite forwards;
 }
 
 .remaining {
@@ -75,18 +88,19 @@ a {
     height: 480px;
     display: block;
     float: left;   
+    margin-top: 40px;
+    margin-left: 20px;
 }
 
 .images {
     text-decoration: underline;
-    width: 200px;
+    width: 160px;
     height  : 455px;
     display: block;
     float: left;
-    color: black;
-    margin: 0 auto;
+    margin: 40px auto;
     text-align: center;
-    padding: 20px 0;
+    padding-top: 15px;
 }
 
 .images-search {
@@ -101,7 +115,6 @@ a {
 img {
     width: 65px;
     height: 65px;
-    
 }
 
 .cell {
@@ -112,13 +125,14 @@ img {
     border: 1px solid black;
 }
 
-.cell:hover {
-    background-color: #98d2eb;
+.hint-button {
+    background-color: rgb(253, 253, 108);
+    padding: 5px;
+    font: bold;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 15px;
+    border-radius: 10px;
 }
-
-/* .hint {
-
-} */
 
 /*hidden*/
 
@@ -167,7 +181,51 @@ img {
     pointer-events: all;
 }
 
-.instruction-pop {
+.instruction-list-header {
+    text-align: center;
+    text-decoration: underline;
+}
+
+li {
+    line-height: 2;
+    font-size: 20px;
+}
+/* https://www.w3schools.com/howto/howto_css_modals.asp */
+#myModal {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 15px;
+    border: 2px solid rgb(17, 85, 114);
+    text-align: left;
+    line-height: 2;
+    border-radius: 20px;
+}
+
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* .instruction-pop {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -195,4 +253,4 @@ img {
 .instruction-show .instruction-pop {
     opacity: 1;
     pointer-events: all;
-}
+} */
