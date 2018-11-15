@@ -100,7 +100,9 @@ hint.addEventListener('click', (e)=> {
     let hintNone = document.querySelectorAll("[data-img = '0']");
     for(let i = 0; i < hintNone.length; i += 1){
     let randomArrayNumber = Math.floor(Math.random() * hintNone.length);
-    if (hintNone[randomArrayNumber].dataset.clicked === 'no') {
+    if (hintNone[randomArrayNumber].dataset.clicked === 'yes') {
+        return false;
+    } else if(hintNone[randomArrayNumber].dataset.clicked === 'no') {
         hintArray.push(randomArrayNumber);
         break;
     } 
@@ -116,4 +118,13 @@ hint.addEventListener('click', (e)=> {
     cellHintTwo = document.querySelector(`[data-name = '${hintArray[1]}']`);
     cellHint.style.background = 'rgb(245, 245, 140)';
     cellHintTwo.style.background = 'rgb(245, 245, 140)';
+    cellHint.addEventListener('click', (e) => {
+        cellHintTwo.style.opacity = '1';
+        hint.style.opacity = '0';
+    });
+    cellHintTwo.addEventListener('click', (e) => {
+        cellHint.style.opacity = '1';
+        hint.style.opacity = '0';
+    });
+    
 })
